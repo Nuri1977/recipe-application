@@ -72,9 +72,8 @@ group :test do
   # Use system testing [https://guides.rubyonrails.org/testing.html#system-testing]
 
   gem 'selenium-webdriver'
- 
 end
 
-gem 'rubocop', '>= 1.0', '< 2.0'
 gem 'devise'
 gem 'ffi'
+gem 'rubocop', '>= 1.0', '< 2.0'
