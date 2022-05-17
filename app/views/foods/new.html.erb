@@ -1,0 +1,13 @@
+<div class="container mx-auto flex justify-center">
+  <div class="p-6 max-w-lg bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 m-2">
+    <h1 class="mb-8 text-4xl font-bold tracking-tight text-gray-900 dark:text-white text-center">Create a new food</h1>
+    <%= form_with model: @food, html: { class: 'flex flex-col gap-4 items-start' } do |f| %>
+      <%= f.hidden_field :user_id, value: current_user.id%>
+      <%= f.text_field :name, placeholder: 'Food name' %>
+      <%= f.text_field :measurement_unit, placeholder: 'Measurement Unit' %>
+      <%= f.number_field :price, placeholder: 'price(dollars)' %>
+    
+      <%= f.submit "Create Food", class: 'bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded'%>
+    <% end %>
+  </div>
+</div>

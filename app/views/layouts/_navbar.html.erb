@@ -20,7 +20,7 @@
             <div class="items-center md:flex">
                 <div class="flex flex-col mt-2 md:flex-row md:mt-0 md:mx-1">
                     <%= link_to 'Home', root_path, class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" %>
-                    <%= link_to 'One', "#", class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" %>
+                    <%= link_to 'foods', foods_path, class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" %>
                     <% if user_signed_in? %>
                         <%= link_to 'My recepies', recipes_path, class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" %>
                     <% end %>
