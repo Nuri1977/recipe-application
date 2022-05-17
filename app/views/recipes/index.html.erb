@@ -10,11 +10,10 @@
       <div class="block p-6 max-w-xlg bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 m-2">
         <div class="flex flex-col md:flex-row">
           <div class="flex-1 text-center">
-            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+            <h5 class="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
               <%= recipe.name %>
             </h5>
-            <button class="btn">delete</button>
-            <%= button_to "Remove", recipe_path(recipe.id), method: :delete, class: 'hover:opacity-60 underline' if can? :destroy, recipe %>
+            <%= button_to "Remove", recipe_path(recipe.id), method: :delete, class: 'bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded' if can? :destroy, recipe %>
           </div>
           <div class="flex-1 text-center">
             <p class="text-base text-gray-800 md:text-lg"><%= truncate recipe.description, length: 240 %></p>
@@ -25,6 +24,9 @@
     <% end %>
     <% else %>
       <h1 class="text-center m-4 text-2xl font-medium">There are no recipes</h1>
+      <div class="text-center m-4">
+        <%= link_to "Add new recipe", new_recipe_path, class: "bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded" %>
+      </div>
     <% end %>
 
 </div>
