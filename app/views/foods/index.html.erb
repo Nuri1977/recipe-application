@@ -1,63 +1,65 @@
-<% if @foods.length !=0 %>
-<h1 class="text-center m-4 py-4 text-5xl font-medium">My Foods</h1>
-<div class="text-center m-4">
-  <% if current_user %>
-    <%= link_to "Add new food", new_food_path, class: "bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded" %>
-  <% end %>
-</div>
-<div class="flex flex-col">
-  <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
-    <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
-      <div class="overflow-hidden">
-        <table class="min-w-full">
-          <thead class="bg-white border-b">
-            <tr>
-              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                #
-              </th>
-              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-                Food
-              </th>
-              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-               Measurement Unit
-              </th>
-              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-               Unit Price
-              </th>
-              <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
-               Actions
-             </th>
-            </tr>
-          </thead>
-          <tbody>
-          <% @foods.each do |food| %>
-            <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
-              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%=food.id%></td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-              <%=food.name%>
-              </td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-              <%=food.measurement_unit%>
-              </td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-              <%=food.price%>
-              </td>
-              <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
-              <%= button_to "Remove", food_path(food.id), method: :delete, class: 'bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded' if can? :destroy, food  %>
-                </td>
-            </tr>
-           <%end%>
-          </tbody>
-        </table>
+<div class="container mx-auto">
+  <% if @foods.length !=0 %>
+    <h1 class="text-center m-4 py-4 text-5xl font-medium">My Foods</h1>
+    <div class="text-center m-4">
+      <% if current_user %>
+        <%= link_to "Add new food", new_food_path, class: "bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded" %>
+      <% end %>
+    </div>
+    <div class="flex flex-col">
+      <div class="overflow-x-auto sm:-mx-6 lg:-mx-8">
+        <div class="py-2 inline-block min-w-full sm:px-6 lg:px-8">
+          <div class="overflow-hidden">
+            <table class="min-w-full">
+              <thead class="bg-white border-b">
+                <tr>
+                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                    #
+                  </th>
+                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                    Food
+                  </th>
+                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                  Measurement Unit
+                  </th>
+                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                  Unit Price
+                  </th>
+                  <th scope="col" class="text-sm font-medium text-gray-900 px-6 py-4 text-left">
+                  Actions
+                </th>
+                </tr>
+              </thead>
+              <tbody>
+              <% @foods.each do |food| %>
+                <tr class="bg-white border-b transition duration-300 ease-in-out hover:bg-gray-100">
+                  <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900"><%=food.id%></td>
+                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                  <%=food.name%>
+                  </td>
+                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                  <%=food.measurement_unit%>
+                  </td>
+                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                  <%=food.price%>
+                  </td>
+                  <td class="text-sm text-gray-900 font-light px-6 py-4 whitespace-nowrap">
+                  <%= button_to "Remove", food_path(food.id), method: :delete, class: 'bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded' if can? :destroy, food  %>
+                    </td>
+                </tr>
+              <%end%>
+              </tbody>
+            </table>
+          </div>
+        </div>
       </div>
     </div>
-  </div>
-</div>
-<%else%>
+  <%else%>
 
-<h1 class="text-center m-4 text-2xl font-medium">There are no foods</h1>
-<div class="text-center m-4">
-  <%= link_to "Add new food", new_food_path, class: "bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded" %>
-</div>
+    <h1 class="text-center m-4 text-2xl font-medium">There are no foods</h1>
+    <div class="text-center m-4">
+      <%= link_to "Add new food", new_food_path, class: "bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded" %>
+    </div>
 
-<%end%>
+  <%end%>
+</div>
