@@ -14,6 +14,7 @@
               <%= recipe.name %>
             </h5>
             <button class="btn">delete</button>
+            <%= button_to "Remove", recipe_path(recipe.id), method: :delete, class: 'hover:opacity-60 underline' if can? :destroy, recipe %>
           </div>
           <div class="flex-1 text-center">
             <p class="text-base text-gray-800 md:text-lg"><%= truncate recipe.description, length: 240 %></p>

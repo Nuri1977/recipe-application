@@ -29,7 +29,7 @@
 
                 <div class="md:flex">
                 <% if user_signed_in? %>
-                    <div class="my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-1" ><%= current_user.email %></div>
+                    <div class="my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-1" ><%= current_user.name %></div>
                     <%= button_to("Log Out", destroy_user_session_path, method: :delete, class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0") %>
                 <% else %>
                     <%= link_to "Sign in", user_session_path, class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" %>
