@@ -7,5 +7,9 @@ Rails.application.routes.draw do
   # root "articles#index"
   root to: 'pages#home'
   resources :recipes
+
   resources :foods
+
+  get 'public_recipes/index'
+
 end
