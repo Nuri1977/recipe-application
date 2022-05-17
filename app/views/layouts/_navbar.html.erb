@@ -21,16 +21,19 @@
                 <div class="flex flex-col mt-2 md:flex-row md:mt-0 md:mx-1">
                     <%= link_to 'Home', root_path, class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" %>
                     <%= link_to 'One', "#", class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" %>
-                    <%= link_to 'Two', "#", class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" %>
+                    <% if user_signed_in? %>
+                        <%= link_to 'My recepies', recipes_path, class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" %>
+                    <% end %>
                     <%= link_to 'Thre', "#" , class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" %>
                 </div>
 
                 <div class="md:flex">
                 <% if user_signed_in? %>
-                    <div class="my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" ><%= current_user.email %></div>
+                    <div class="my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-1" ><%= current_user.email %></div>
                     <%= button_to("Log Out", destroy_user_session_path, method: :delete, class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0") %>
                 <% else %>
                     <%= link_to "Sign in", user_session_path, class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" %>
+                    <%= link_to "Sign up", new_user_registration_path, class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" %>
                 <% end %>
                 </div>
 
