@@ -14,7 +14,9 @@
         <h5 class="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           This recipe is <%= @recipe.public ? 'public' : 'Private' %>
         </h5>
-        <button class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Change public/private</button>
+        <% if can? :manage, @recipe %>
+          <%= button_to "Make it #{@recipe.public ? 'private' : 'public'}", recipe_path(@recipe.id), class: 'bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded', method: :patch %>
+        <% end %>
       </div>
     </div>
     <div class="flex flex-col md:flex-row py-4">
