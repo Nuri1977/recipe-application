@@ -1,4 +1,6 @@
 class RecipesController < ApplicationController
+  before_action :authenticate_user!
+
   def index
     @recipes = current_user.recipes
   end
@@ -19,6 +21,12 @@ class RecipesController < ApplicationController
     else
       redirect_to new_recipe_path, notice: 'recipe could not be created!'
     end
+  end
+
+  def destroy
+    recipe = Recipe.find(params[:id])
+    recipe.destroy!
+    redirect_to recipes_path, notice: "Recipe #{recipe.name} deleted successfully!"
   end
 
   private
