@@ -1,6 +1,10 @@
 <div class="container mx-auto">
   <% if @recipes.length !=0 %>
-    <h1 class="text-center m-4 text-2xl font-medium">Welcome to my recepies</h1>
+    <h1 class="text-center m-4 py-4 text-5xl font-medium">My recepies</h1>
+    <div class="text-center m-4">
+      <%= link_to "Add new recipe", new_recipe_path, class: "bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded" %>
+    </div>
+
     <% @recipes.each do |recipe| %>
       <%= link_to recipe_path(recipe.id), id: recipe.id do %>
       <div class="block p-6 max-w-xlg bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 m-2">

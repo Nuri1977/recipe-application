@@ -4,27 +4,27 @@
     <div class="flex flex-col md:flex-row">
       <div class="flex-1 text-center">
         <h5 class="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-          Preparation time: <%= @recipe.preparation_time %> hours
+          Preparation time: <%= @recipe.preparation_time %> minutes
         </h5>
         <h5 class="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-          Cooking time: <%= @recipe.cooking_time %> hours
+          Cooking time: <%= @recipe.cooking_time %> minutes
         </h5>
       </div>
       <div class="flex-1 text-center">
         <h5 class="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           This recipe is <%= @recipe.public ? 'public' : 'Private' %>
         </h5>
-        <button class="bg-gray-800 hover:bg-gray-400 text-white font-bold py-2 px-4 rounded">Change public/private</button>
+        <button class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Change public/private</button>
       </div>
     </div>
     <div class="flex flex-col md:flex-row py-4">
       <div class="flex-1 text-center py-4">
-        <button class="bg-gray-800 hover:bg-gray-400 text-white font-bold py-2 px-4 rounded">
+        <button class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
           Generate shopin list
         </button>
       </div>
       <div class="flex-1 text-center py-4">
-        <button class="bg-gray-800 hover:bg-gray-400 text-white font-bold py-2 px-4 rounded">
+        <button class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
           Add ingridient
         </button>
       </div>
