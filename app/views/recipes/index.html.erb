@@ -1,0 +1,23 @@
+<div class="container mx-auto">
+  <% if @recipes.length !=0 %>
+    <h1 class="text-center m-4 text-2xl font-medium">Welcome to my recepies</h1>
+    <% @recipes.each do |recipe| %>
+      <div class="block p-6 max-w-xlg bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 m-2">
+        <div class="flex flex-col md:flex-row">
+          <div class="flex-1 text-center">
+            <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+              <%= recipe.name %>
+            </h5>
+            <button class="btn">delete</button>
+          </div>
+          <div class="flex-1 text-center">
+            <p class="text-base text-gray-800 md:text-lg"><%= truncate recipe.description, length: 240 %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+    <% else %>
+      <h1 class="text-center m-4 text-2xl font-medium">There are no recipes</h1>
+    <% end %>
+
+</div>
