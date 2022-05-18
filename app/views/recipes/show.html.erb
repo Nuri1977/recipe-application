@@ -58,10 +58,10 @@
                 <td class="p-1">$<%= ingredient.food.price %></td>
                 <td class="p-1">$<%= ingredient.food.price * ingredient.quantity || 0 %></td>
                 <td class="p-1">
-                  <%= link_to "Modify", edit_recipe_recipe_food_path(recipe_id: @recipe.id, id: ingredient.food.id), class: 'underline' %>
+                  <%= link_to "Modify", edit_recipe_recipe_food_path(recipe_id: @recipe.id, id: ingredient.food.id), class: 'underline' if can? :manage, @recipe %>
                 </td>
                 <td class="p-1">
-                  <%= button_to "Delete", recipe_recipe_food_path(recipe_id: @recipe.id, id: ingredient.food.id), method: :delete, class: 'underline'%>
+                  <%= button_to "Delete", recipe_recipe_food_path(recipe_id: @recipe.id, id: ingredient.food.id), method: :delete, class: 'underline' if can? :manage, @recipe%>
                 </td>
               </tr>
             <% end %>
