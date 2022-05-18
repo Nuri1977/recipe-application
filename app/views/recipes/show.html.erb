@@ -1,5 +1,5 @@
 <div class="container mx-auto m-3">
-  <div class="block p-6 max-w-xlg bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 m-2">
+  <div class="block p-6 max-w-xlg bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 m-2">
     <h5 class="mb-16 text-5xl font-bold tracking-tight text-gray-900 dark:text-white text-center"><%= @recipe.name %></h5>
     <div class="flex flex-col md:flex-row">
       <div class="flex-1 text-center">
@@ -14,8 +14,15 @@
         <h5 class="mb-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
           This recipe is <%= @recipe.public ? 'public' : 'Private' %>
         </h5>
-        <button class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">Change public/private</button>
+        <% if can? :manage, @recipe %>
+          <%= button_to "Make it #{@recipe.public ? 'private' : 'public'}", recipe_path(@recipe.id), class: 'bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded', method: :patch %>
+        <% end %>
       </div>
+    </div>
+    <div class="text-center">
+      <p class="mb-4 text-1xl font-bold tracking-tight text-gray-900 dark:text-white">
+        Descrition: <%= @recipe.description %>
+      </p>
     </div>
     <div class="flex flex-col md:flex-row py-4">
       <div class="flex-1 text-center py-4">
@@ -24,10 +31,44 @@
         </button>
       </div>
       <div class="flex-1 text-center py-4">
-        <button class="bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded">
-          Add ingridient
-        </button>
+        <% if can? :manage, @recipe %>
+          <%= link_to "Add ingredient", new_recipe_recipe_food_path(@recipe.id), class: 'bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded' %>
+        <% end %>
       </div>
+    </div>
+    <hr class="my-8">
+    <div>
+      <% if @ingridients.present? %>
+        <table class="table-auto w-full text-left mb-10 text-white text-lg border-collapse border border-slate-400">
+          <thead class="bg-gray-800">
+            <tr class="h-10">
+              <th class="p-1">Food</th>
+              <th class="p-1">Quanity</th>
+              <th class="p-1">Price</th>
+              <th class="p-1">Value</th>
+              <th class="p-1"></th>
+              <th class="p-1"></th>
+            </tr>
+          </thead>
+          <tbody class="bg-gray-100 text-gray-800 p-20">
+            <% @ingridients.each do |ingredient| %>
+              <tr class="h-10">
+                <td class="p-1"><%= ingredient.food.name %></td>
+                <td class="p-1"><%= ingredient.quantity %> <%= ingredient.food.measurement_unit %></td>
+                <td class="p-1">$<%= ingredient.food.price %></td>
+                <td class="p-1">$<%= ingredient.food.price * ingredient.quantity || 0 %></td>
+                <td class="p-1">
+                  <%= link_to "Modify", edit_recipe_recipe_food_path(recipe_id: @recipe.id, id: ingredient.food.id), class: 'underline' if can? :manage, @recipe %>
+                </td>
+                <td class="p-1">
+                  <%= button_to "Delete", recipe_recipe_food_path(recipe_id: @recipe.id, id: ingredient.food.id), method: :delete, class: 'underline' if can? :manage, @recipe%>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      <% end %>
     </div>
   </div>
 </div>
+

@@ -4,7 +4,7 @@ class FoodsController < ApplicationController
   end
 
   def show
-    @Food = Food.find(params[:id])
+    @food = Food.find(params[:id])
   end
 
   def new
