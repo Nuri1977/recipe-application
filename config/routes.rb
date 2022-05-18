@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     resources :recipe_foods
   end
   resources :foods
-
+  resources :shopping_list, only: [:index]
   get 'public_recipes/index'
 
 end

@@ -22,8 +22,9 @@
                     <%= link_to 'Foods', root_path, class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" %>
                     <% if user_signed_in? %>
                         <%= link_to 'My recepies', recipes_path, class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" %>
+                        <%= link_to 'Shoping list', shopping_list_index_path, class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" %>
                     <% end %>
-                    <%= link_to 'Recipes', public_recipes_index_path, class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" %>
+                    <%= link_to 'Public Recipes', public_recipes_index_path, class: "my-1 text-sm leading-5 transition-colors duration-200 transform text-gray-200 hover:text-blue-400 hover:underline md:mx-4 md:my-0" %>
                 </div>
 
                 <div class="md:flex">
