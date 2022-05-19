@@ -1,0 +1,14 @@
+<div class="container mx-auto flex justify-center">
+  <div class="p-6 max-w-lg bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 m-2">
+    <h1 class="font-bold text-4xl mb-10">Add ingredient for <%= @recipe.name %></h1>
+    <% if @foods.present? %>
+      <%= form_with model: @recipe_food, url: recipe_recipe_foods_path, html: { class: 'flex flex-col items-start gap-4' } do |f| %>
+        <%= f.select :food_id, @foods.map { |food| [food.name, food.id] }, {}, { class: "w-full max-w-sm p-2"} %>
+        <%= f.number_field :quantity, placeholder: 'Quantity', min: 0, required: true, class: "w-full max-w-[100px] p-2" %>
+        <%= f.submit "Add ingredient", class: 'bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded' %>
+      <% end %>
+    <% else %>
+      <h3 class="font-bold mb-10">No food available for <%= current_user.name %> head over to <%= link_to "foods page", foods_path, class: 'underline' %> to add new food</h3>
+    <% end %>
+  </div>
+</div>

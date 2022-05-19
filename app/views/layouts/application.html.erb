@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Recipeapp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  </head>
+
+  <body>
+    <%= render partial: "layouts/navbar" %>
+    <% if notice %>
+      <p class="alert alert-success px-10 py-2 bg-green-300"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p class="alert alert-danger px-10 py-2 bg-red-300"><%= alert %></p>
+    <% end %>
+    <%= yield %>
+  </body>
+</html>

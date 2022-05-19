@@ -1,0 +1,17 @@
+<div class="container mx-auto flex justify-center">
+  <div class="p-6 max-w-lg bg-white rounded-lg border border-gray-200 shadow-md dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700 m-2">
+    <h1 class="mb-8 text-4xl font-bold tracking-tight text-gray-900 dark:text-white text-center">Create a new recipe</h1>
+    <%= form_with model: @recipe, html: { class: 'flex flex-col gap-4 items-start' } do |f| %>
+      <%= f.hidden_field :user_id, value: current_user.id %>
+      <%= f.text_field :name, placeholder: 'Recipe name' %>
+      <%= f.number_field :preparation_time, placeholder: 'Preparation Time (minutes)' %>
+      <%= f.number_field :cooking_time, placeholder: 'Cooking Time (minutes)' %>
+      <%= f.text_area :description, placeholder: 'Description', size: '50x5'%>
+      <div>
+        <%= f.label :public, "Public" %>
+        <%= f.check_box :public %>
+      </div>
+      <%= f.submit "Create recipe", class: 'bg-gray-800 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded'%>
+    <% end %>
+  </div>
+</div>
