@@ -13,7 +13,7 @@
 
 ## Live Demo (if available)
 
- coming soon!
+ [live link](https://struga-recipes.herokuapp.com/)
 
 
 ## Getting Started
